@@ -20,12 +20,16 @@ import com.devsuperior.dsvendas.service.SaleService;
 public class SaleController {
 	@Autowired 
 	private SaleService service;
-	@GetMapping
+	
+
+	@GetMapping()
 	public ResponseEntity<Page<SaleDTO>> findAll(Pageable pageable){
 		Page<SaleDTO> list = service.findAll(pageable);
 		return ResponseEntity.ok(list);
 	}
 
+	
+	
 	@GetMapping(value = "/amount-by-seller")
 	public ResponseEntity<List<SaleSumDTO>> amountGroupedBySeller(){
 		List<SaleSumDTO> list = service.amountGroupedBySeller();
@@ -37,6 +41,5 @@ public class SaleController {
 		List<SaleSuccessDTO> list = service.successGroupedBySeller();
 		return ResponseEntity.ok(list);
 	}
-
 	
 }

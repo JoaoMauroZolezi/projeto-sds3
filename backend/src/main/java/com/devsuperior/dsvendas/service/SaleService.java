@@ -25,7 +25,6 @@ public class SaleService {
 	
 	@Transactional(readOnly = true)
 	public  Page<SaleDTO> findAll(Pageable pageable){
-		sellerRepository.findAll();
 		Page<Sale> result = repository.findAll(pageable);
 		return result.map(x ->new SaleDTO(x));
 	}
